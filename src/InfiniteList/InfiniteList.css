@@ -1,7 +1,7 @@
 .listContainer {
-    background-color: #fff2;
-    border-radius: 0.5rem;
-    flex: 1;
-    padding: 0.3rem;
-    overflow: hidden;
+  background-color: #fff2;
+  border-radius: 0.5rem;
+  flex: 1;
+  padding: 0.3rem;
+  overflow: scroll;
 }
