@@ -1,6 +1,7 @@
 import "./ListItem.css";
 
 import { Comment } from "../../types";
+import { memo } from "react";
 
 type CommentItemProps = {
   comment: Comment;
@@ -16,4 +17,4 @@ function CommentItem({ comment }: CommentItemProps) {
   );
 }
 
-export default CommentItem;
+export default memo(CommentItem);

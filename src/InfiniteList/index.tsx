@@ -1,6 +1,6 @@
 import "./InfiniteList.css";
 
-import { memo, useCallback, useEffect, useId, useRef } from "react";
+import { memo, useCallback, useId } from "react";
 
 import CommentItem from "./ListItem";
 import useDataFetcher from "./useDataFetcher";
@@ -34,4 +34,4 @@ function InfiniteList() {
   );
 }
 
-export default (InfiniteList);
+export default memo(InfiniteList);
