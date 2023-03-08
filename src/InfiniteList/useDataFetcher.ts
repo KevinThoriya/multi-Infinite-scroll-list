@@ -20,17 +20,25 @@ const useDataFetcher = () => {
         ...prev,
         loading: true,
       }));
-      let response = await fetch(
-        `${AppUrl}comments?_page=${++page}&_limit=10`,
-        {
-          signal: signal,
-        }
-      );
-      let result = (await response.json()) as Comment[];
-      setDataApi((prev) => ({
-        data: prev.data.concat(result),
-        loading: false,
-      }));
+      try {
+        let response = await fetch(
+          `${AppUrl}comments?_page=${++page}&_limit=10`,
+          {
+            signal: signal,
+          }
+        );
+        let result = (await response.json()) as Comment[];
+        setDataApi((prev) => ({
+          data: prev.data.concat(result),
+          loading: false,
+        }));
+      } catch (e) {
+        console.error("Network Error ! :", e);
+        setDataApi((prev) => ({
+          ...prev,
+          loading: false,
+        }));
+      }
     },
     [setDataApi]
   );
