@@ -1,24 +1,32 @@
 import "./InfiniteList.css";
 
+import { useCallback, useEffect, useId, useRef } from "react";
+
 import CommentItem from "./ListItem";
 import useDataFetcher from "./useDataFetcher";
-import { useId } from "react";
+
+const ReloadFactor = 50;
 
 function InfiniteList() {
   const { data } = useDataFetcher();
   const uniqueListId = useId();
 
+  const onScroll = useCallback((event: React.UIEvent<HTMLDivElement>) => {
+    const target: HTMLDivElement = event.currentTarget!;
+    const totalHeight = target.scrollHeight;
+    const visibleHeight = target.scrollTop + target.clientHeight;
+    const shouldLoadMore = visibleHeight + ReloadFactor > totalHeight;
+    if (!shouldLoadMore) return;
+
+    console.log(event);
+  }, []);
+
   return (
-    <div className="listContainer">
+    <div onScroll={onScroll} className="listContainer">
       <h1>Infinite List</h1>
-      <div className="">
-        {data.map((comment) => (
-          <CommentItem
-            key={`${uniqueListId}-${comment.id}`}
-            comment={comment}
-          />
-        ))}
-      </div>
+      {data.map((comment) => (
+        <CommentItem key={`${uniqueListId}-${comment.id}`} comment={comment} />
+      ))}
     </div>
   );
 }
