@@ -1,0 +1,47 @@
+.listItemContainer {
+  background-color: #111a;
+  margin-top: 0.7rem;
+  padding: 0.5rem;
+  position: relative;
+  
+  text-align: left;
+}
+
+.commentUserName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100vw / 5);
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 0.8rem;
+}
+
+.commentId {
+    position: absolute;
+    top: 1;
+    right: 0.5rem;
+    font-size: x-small;
+    border-radius: 50%;
+    background-color: #111a;
+    padding: .4rem;
+}
+
+.commentUserEmail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100vw / 5);
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
+.commentBody {
+  border-top: 1px solid #fff2;
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 6rem;
+}
