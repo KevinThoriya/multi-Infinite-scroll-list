@@ -6,10 +6,12 @@ import CommentItem from "./ListItem";
 import useDataFetcher from "./useDataFetcher";
 
 const ReloadFactor = 50;
+type InfiniteListProps = {
+  listId: string | number;
+};
 
-function InfiniteList() {
+function InfiniteList({ listId }: InfiniteListProps) {
   const { data, next } = useDataFetcher();
-  const uniqueListId = useId();
 
   const onScroll = useCallback(
     (event: React.UIEvent<HTMLDivElement>) => {
@@ -28,7 +30,7 @@ function InfiniteList() {
     <div onScroll={onScroll} className="listContainer">
       <h1>Infinite List</h1>
       {data.map((comment) => (
-        <CommentItem key={`${uniqueListId}-${comment.id}`} comment={comment} />
+        <CommentItem key={`${listId}-${comment.id}`} comment={comment} />
       ))}
     </div>
   );
