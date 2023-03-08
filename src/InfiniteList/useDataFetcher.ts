@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
+import { AppUrl } from "../Config";
 import { Comment } from "../types";
 
 type CommentDataProviderType = {
@@ -20,7 +21,7 @@ const useDataFetcher = () => {
         loading: true,
       }));
       let response = await fetch(
-        `https://jsonplaceholder.typicode.com/comments?_page=${++page}&_limit=10`,
+        `${AppUrl}comments?_page=${++page}&_limit=10`,
         {
           signal: signal,
         }
